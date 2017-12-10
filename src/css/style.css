@@ -1,0 +1,367 @@
+.a {
+
+}
+
+.b {
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+iframe {
+  background: white;
+}
+
+::-webkit-scrollbar {
+   width: 8px;
+   height: 8px
+}
+
+::-webkit-scrollbar-track-piece {
+   background-color: transparent
+}
+
+::-webkit-scrollbar-thumb {
+   border-radius: 9px;
+   background-color: rgba(195, 195, 195, 0.3)
+}
+
+::-webkit-scrollbar-thumb:hover {
+   background-color: rgba(126, 126, 126, 0.6)
+}
+
+body {
+  font-family: 'Avenir', 'Microsoft YaHei', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-width: 1024px;
+  height: 100%;
+  min-height: 768px;
+  box-sizing: border-box;
+  background: url(../img/window_bg.jpg) no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  -webkit-background-size: cover;/* 兼容Webkit内核浏览器如Chrome和Safari */
+  -o-background-size: cover;/* 兼容Opera */
+  text-align: center;
+  overflow: hidden;
+
+
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+#app {
+  position: relative;
+  width: 100%;
+  height: 100%;
+
+  perspective: 1500px;
+
+  perspective-origin: 50% 20%;
+  overflow: hidden;
+}
+
+
+#app .control-center {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  width: 200px;
+  height: 45px;
+  z-index: 1;
+}
+
+#app .control-center .freemove {
+  position: absolute;
+  top: 6px;
+  left: 5px;
+  display: block;
+  width: 12px;
+  height: 15px;
+  cursor: pointer;
+  background: url(../img/hand.png) no-repeat;
+  background-size: cover;
+}
+
+#app .control-center .not-freemove {
+  display: none;
+  cursor: not-allowed;
+}
+
+#app .control-center .music-control {
+  position: absolute;
+  top: 10px;
+  left: 30px;
+  width: 14px;
+  height: 10px;
+  cursor: pointer;
+  background: url(../img/play.png) no-repeat;
+}
+
+#app .control-center .music-mute {
+  background: url(../img/mute.png) no-repeat;
+}
+
+#app .control-center .music-line {
+  position: absolute;
+  top: 10px;
+  right: 36px;
+  width: 110px;
+  height: 10px;
+}
+
+#app .control-center .music-line-bg {
+  width: 100px;
+  margin: 2px 5px;
+  height: 6px;
+  border: 0;
+  border-radius: 3px;
+  background: #ede2d1;
+  overflow: hidden;
+}
+
+#app .control-center .music-line-bg .volume {
+  margin-left: -1px;
+  height: 6px;
+  width: 20%;
+  border: 0;
+  border-radius: 3px;
+  background: #a19355;
+}
+
+#app .control-center .music-line .button {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width:10px;
+  height: 10px;
+  border: 0;
+  border-radius: 5px;
+  background: url(../img/music_button.png) no-repeat;
+  cursor: pointer;
+}
+#app .control-center .music-line .button:hover {
+  background: url(../img/music_button_hover.png) no-repeat;
+}
+#app .control-center .music-line .button:active {
+  background: url(../img/music_button.png) no-repeat;
+}
+
+#app .control-center .next {
+  position: absolute;
+  top: 9px;
+  right: 10px;
+  width: 16px;
+  height: 16px;
+  background: url(../img/next.png) no-repeat;
+  cursor: pointer;
+}
+
+#app .control-center span {
+  position: absolute;
+  display: inline-block;
+  bottom: 0;
+  right: 10px;
+  display: block;
+  height: 20px;
+  line-height: 20px;
+  width:200px;
+  font-size: 12px;
+  color: #ebe0cf;
+  text-align: right;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+#app .content {
+  position: relative;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  /*min-width: 1600px;*/
+  margin: 100px auto;
+  box-sizing: border-box;
+
+  transform-style: preserve-3d;
+  transition: all 1s ease-out;
+
+  /*开启GPU*/
+  -webkit-transform: translateZ(-3000px);
+  -moz-transform: translateZ(-3000px);
+  -ms-transform: translateZ(-3000px);
+  -o-transform: translateZ(-3000px);
+  transform: translateZ(-3000px);
+
+  -webkit-backface-visibility: hidden;
+   -moz-backface-visibility: hidden;
+   -ms-backface-visibility: hidden;
+   backface-visibility: hidden;
+
+   /*-webkit-perspective: 1000px;
+   -moz-perspective: 1000px;
+   -ms-perspective: 1000px;*/
+
+}
+
+
+#box {
+  width: 100%;
+  height: 200px;
+  line-height: 200px;
+  margin: auto;
+  margin-top: 5%;
+  text-align: center;
+  background: rgba(218, 120, 33, 0);
+  position: relative;
+  transform-style: preserve-3d;
+  transform: rotateX(-90deg)rotateY(0deg)scale3d(.5,.5,.5);
+  /*animation: test 20s linear infinite;*/
+}
+
+
+
+#box .item {
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  width: 205px;
+  height: 420px;
+  border: 0;
+  text-align: center;
+  background: url(../img/bg.png) no-repeat;
+  vertical-align: bottom;
+  opacity: 1;
+}
+
+#box .text {
+  display: block;
+  margin: 40% auto;
+  font-size: 45px;
+  color: #FFF;
+}
+
+#app #selected {
+  position: absolute;
+  width: 205px;
+  height: 420px;
+  margin: 0 auto;
+  border: 0;
+  text-align: center;
+  /*background: url(../img/select.png) no-repeat;*/
+  background: url(../img/bg.png) no-repeat;
+  vertical-align: bottom;
+  opacity: 1;
+  z-index: -1;
+  animation: congrate 500ms linear 1;
+  animation-fill-mode:forwards;
+  transform: translateZ(3000px);
+}
+
+#app #selected .text{
+  position: relative;
+  display: block;
+  margin: 0 auto;
+  margin-top: 72%;
+  font-size: 45px;
+  color: #FFF;
+}
+
+@keyframes congrate {
+  0% {
+    transform: translateZ(3000px)scale(1,1);
+    opacity: 1
+  }
+  /*10% {
+    transform: scale(1.5,1.5);
+    opacity: 0.4
+  }*/
+  100% {
+    transform: translateZ(3000px)scale(5,5);
+    opacity: 0
+  }
+}
+
+
+#app .go {
+  position: fixed;
+  bottom: 100px;
+  width: 100%;
+  min-width: 1024px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+#app .go .button-bg{
+  position: relative;
+  width: 416px;
+  height: 84px;
+  margin: 0 auto;
+  border: 0;
+  border-radius: 42px 0 0 42px;
+  background: url(../img/button_bg.png) no-repeat;
+  background-size: cover;
+}
+
+#app .go .button-bg .reload {
+  position: absolute;
+  top: 10px;
+  left: 12px;
+  width: 64px;
+  height: 64px;
+  border: 0;
+  border-radius: 32px;
+  outline: none;
+  background: url(../img/reflash.png) no-repeat;
+  background-size: cover;
+  cursor: pointer;
+}
+#app .go .button-bg .reload:hover {
+  background: url(../img/reflash_hover.png) no-repeat;
+  background-size: cover;
+}
+#app .go .button-bg .reload:active {
+  background: url(../img/reflash_press.png) no-repeat;
+  background-size: cover;
+}
+
+#app .go .button-bg .start {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 336px;
+  height: 64px;
+  border: 0;
+  outline: none;
+  background: url(../img/start.png) no-repeat;
+  background-size: cover;
+  cursor: pointer;
+}
+#app .go .button-bg .start:hover {
+  background: url(../img/start_hover.png) no-repeat;
+  background-size: cover;
+}
+#app .go .button-bg .start:active {
+  background: url(../img/start_press.png) no-repeat;
+  background-size: cover;
+}
+
+#app .go .button-bg .start-disabled {
+  cursor: not-allowed;
+  background: url(../img/start_disabled.png) no-repeat;
+  background-size: cover;
+}
+#app .go .button-bg .start-disabled:hover {
+  background: url(../img/start_disabled.png) no-repeat;
+  background-size: cover;
+}
