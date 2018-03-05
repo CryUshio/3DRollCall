@@ -12,6 +12,9 @@
 随机算法采用原生js自带函数Math.random()<br/>
 由于使用了es6箭头函数，浏览器最好使用`chrome`。
 
+### 注意事项
+* config.js为配置文件，用记事本打开即可
+* 背景音乐文件请打开src/sound/bg_music存放即可
 
 ### 预览图
 ![image](https://github.com/chym123/3DRollCall/blob/master/preview.png)
